@@ -1,0 +1,42 @@
+entity FullAdder is
+    port (
+        X, Y: in std_logic;
+        Cin: in std_logic;
+        S: out std_logic;
+        Cout: out std_logic
+    );
+end FullAdder;
+
+architecture Structural of FullAdder is
+
+SIGNAL s_o : out Std_logic;
+SIGNAL c_o : out std_logic;
+SIGNAL c_o2
+
+COMPONENT halfAdder
+	port(a, b : in std_logic;
+	s_o, c_o : out std_logic
+	);
+END COMPONENT;
+BEGIN
+adder1 : halfAdder
+	PORT MAP(a => X;
+				b => Y;
+				s_o => s_o;
+				c_o => c_o
+	);
+adder2 : halfAdder
+	PORT MAP(a => s_o;
+				b => c_o;
+				s_o => S
+				c_o => c_o2
+	);
+	
+	
+
+begin
+    S <= X xor Y xor Cin;
+    Cout <= (X and Y) or (Cin and X) or (Cin and Y);
+    P <= X or Y;
+    G <= X and Y;
+end;

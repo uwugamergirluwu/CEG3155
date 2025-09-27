@@ -1,0 +1,40 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+entity adderSubtractor is
+	port(in1, in2 : in std_logic_vector(1 downto 0);
+	inCarry : in std_logic;
+	outSum : out std_logic_vector(1 downto 0);
+	outCarry : out std_logic
+	);
+end;
+
+architecture Struct of adderSubtractor is
+
+SIGNAL intC1, intC2 : std_logic;
+SIGNAL int_out : std_logic_vector(1 downto 0);
+
+COMPONENT FullAdder
+	port(a, b, Cin : in std_logic;
+	sum, Cout : out std_logic
+	);
+end;
+
+BEGIN
+
+fullAdder1: FullAdder PORT MAP (a => in1(0),
+	b => in2(0),
+	Cin => inCarry,	
+	sum => int_out(0),
+	Cout => intC1
+	);
+fullAdder2: FullAdder PORT MAP (a => in1(1),
+	b => in2(1),
+	Cin => intC1,
+	sum => int_out(1),
+	Cout => intC2
+	);
+	
+	outS <= int_out
+	outCarry <= intC2
+end;

@@ -1,0 +1,18 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+entity FullAdder is
+    port (
+        X, Y: in std_logic;
+        Cin: in std_logic;
+        S: out std_logic;
+        Cout: out std_logic
+    );
+end FullAdder;
+
+architecture Structural of FullAdder is
+
+BEGIN
+    S <= X xor Y xor Cin;
+    Cout <= (X and Y) or (Cin and X) or (Cin and Y);
+end;

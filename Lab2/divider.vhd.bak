@@ -1,0 +1,7 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+entity 4-bit divider
+	port (dividend, divisor : in STD_logic_vector(3 downto 0);
+	quotient, remainder : out STD_logic_vector(7 downto 0
+	);

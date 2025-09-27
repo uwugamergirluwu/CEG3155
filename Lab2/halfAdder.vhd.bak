@@ -1,0 +1,33 @@
+LIBRARY ieee;
+USE std_logic_1164.all;
+
+entity halfAdder is
+	port(x, y : IN STD_LOGIC;
+		s : out STD_LOGIC;
+		c_out : out STD_LOGIC
+	);
+end halfAdder
+
+Architecture Structural of halfAdder is
+begin
+		s <= x xor y;
+		c_out <= x and y;
+end; 
+	
+	entity FullAdder is
+    port (
+        X, Y: in std_logic;
+        Cin: in std_logic;
+        S: out std_logic;
+        Cout: out std_logic;
+        P, G: out std_logic
+    );
+end FullAdder;
+
+architecture Structural of FullAdder is
+begin
+    S <= X xor Y xor Cin;
+    Cout <= (X and Y) or (Cin and X) or (Cin and Y);
+    P <= X or Y;
+    G <= X and Y;
+end;
